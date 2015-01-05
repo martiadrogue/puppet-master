@@ -1,0 +1,8 @@
+<VirtualHost *:80>
+    ServerName <%= @hostname %>.<%= @vhname %>
+    ServerAlias <%= @vhname %>
+    DocumentRoot <%= @public_html %>
+
+#   ErrorLog <%= @doc_root %>/error.log
+#   CustomLog <%= @doc_root %>/requests.log combined
+</VirtualHost>
