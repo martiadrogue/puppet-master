@@ -1,4 +1,4 @@
-#
+# timedatectl
 # ls /usr/share/zoneinfo
 # sudo timedatectl list-timezones
 #
