@@ -6,6 +6,8 @@ class apache {
   $sites_available = "$httpd_root/sites-available"
   $sites_enabled = "$httpd_root/sites-enabled"
 
+  class {'timezone': }
+
   package { 'httpd':
     ensure => latest,
     before => File[$httpd_conf],
@@ -41,7 +43,7 @@ class apache {
     ensure => running,
     enable => true,
     hasstatus => true,
-    subscribe => [ File[$httpd_conf], Class['php'] ]
+    subscribe => [ File[$httpd_conf], Class['php'], Class['timezone'] ]
   }
 
 }
