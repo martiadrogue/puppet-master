@@ -8,6 +8,7 @@ class php {
 
   class { 'remi-php': }
   class { 'php::composer': }
+  class { 'php::php-cs-fixer': }
 
   package { 'php56w':
     ensure => latest,
