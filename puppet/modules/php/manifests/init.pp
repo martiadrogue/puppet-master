@@ -4,7 +4,7 @@
 
 class php {
 
-  $php_packages = [ 'php56w-mcrypt', 'php56w-pdo' ]
+  $php_packages = [ 'php56w-mcrypt', 'php56w-pdo', 'php56w-mbstring' ]
 
   class { 'remi-php': }
   class { 'php::composer': }
