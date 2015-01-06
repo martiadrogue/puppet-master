@@ -20,7 +20,7 @@ class php {
   }
 
   exec { 'php_config':
-    command => '/bin/sed -i "s/^;date.timezone =/date.timezone = \'Europe\/Vienna\'/g" /etc/php.ini',
+    command => '/bin/sed -i "s/^;date.timezone =/date.timezone = \'Europe\/Madrid\'/g" /etc/php.ini',
     require => Package['php56w'],
   }
 
