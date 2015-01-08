@@ -15,8 +15,8 @@ define apache::vhost (
     file { $www:
       ensure => directory,
       mode => 755,
-      owner => 'apache',
-      group => 'apache',
+      owner => 'root',
+      group => 'root',
       before => File[$doc_root],
     }
   }
@@ -24,23 +24,23 @@ define apache::vhost (
   file { $doc_root:
     ensure => directory,
     mode => 755,
-    owner => 'apache',
-    group => 'apache',
+    owner => 'root',
+    group => 'root',
   }
 
   file { $public_html:
     ensure => directory,
     mode => 755,
-    owner => 'apache',
-    group => 'apache',
+    owner => 'root',
+    group => 'root',
     require => File[$doc_root],
   }
 
   file { $index:
     ensure => present,
     mode => 755,
-    owner => 'apache',
-    group => 'apache',
+    owner => 'root',
+    group => 'root',
     content => template("apache/var/www/public_html/index.html.erb"),
     require => File[$public_html],
   }
