@@ -13,12 +13,19 @@ class mysql($root_password = 'root') {
     }
   }
 
+  file { '/etc/my.cnf':
+    owner => 'root',
+    group => 'root',
+    source => 'puppet:///modules/mysql/etc/my.cnf',
+    notify => Service['mysqld'],
+    require => Package['mysql-community-server'],
+  }
+
   service { 'mysqld':
     ensure => running,
     enable => true,
     hasrestart => true,
     hasstatus => true,
-    require => Package['mysql-community-server'],
   }
 
   exec { 'root_password':
