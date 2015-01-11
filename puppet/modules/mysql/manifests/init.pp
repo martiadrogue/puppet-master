@@ -16,6 +16,7 @@ class mysql($root_password = 'root') {
   file { '/etc/my.cnf':
     owner => 'root',
     group => 'root',
+    mode => '644'
     source => 'puppet:///modules/mysql/etc/my.cnf',
     notify => Service['mysqld'],
     require => Package['mysql-community-server'],
