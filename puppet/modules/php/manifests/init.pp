@@ -21,8 +21,11 @@ class php {
     require => Package["php56w"],
   }
 
-  exec { 'php_config':
-    command => '/bin/sed -i "s/^;date.timezone =/date.timezone = \'Europe\/Madrid\'/g" /etc/php.ini',
+  file { '/etc/php.ini':
+    owner => 'root',
+    group => 'root',
+    mode => '0440',
+    source => "puppet://$::server/modules/php/etc/php-development.ini",
     require => Package['php56w'],
   }
 
