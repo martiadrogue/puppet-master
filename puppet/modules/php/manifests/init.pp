@@ -26,7 +26,7 @@ class php {
     group => 'root',
     mode => '0440',
     source => "puppet://$::server/modules/php/etc/php-development.ini",
-    require => Package['php56w'],
+    require => Package['php56w', $php_packages],
   }
 
 }
