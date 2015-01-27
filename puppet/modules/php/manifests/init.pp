@@ -1,11 +1,12 @@
 #
 # php56w-common and php56w-cli are php56w's dependencies
 # php56w-common and php56w-pdo are php56w-mysql's dependencies
+# libxslt is php56w-xml dependencies
 #
 
 class php {
 
-  $php_packages = [ 'php56w-mcrypt', 'php56w-mysql', 'php56w-mbstring' ]
+  $php_packages = [ 'php56w-mcrypt', 'php56w-mysql', 'php56w-mbstring', 'php56w-xml' ]
 
   class { 'remi-php': }
   class { 'php::composer': }
