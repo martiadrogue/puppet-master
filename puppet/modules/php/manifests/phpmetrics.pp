@@ -10,7 +10,7 @@ class php::phpmetrics (
 
   exec { 'download_phpmetrics':
     path => '/usr/bin',
-    command => "wget -s https://github.com/Halleck45/PhpMetrics/raw/master/build/$phpmetrics_file.phar -O $phpmetrics_file",
+    command => "wget https://github.com/Halleck45/PhpMetrics/raw/master/build/$phpmetrics_file.phar -O $phpmetrics_file",
     cwd => $tmp_path,
     creates => $full_tmp_path,
     logoutput => false,
