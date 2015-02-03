@@ -11,11 +11,9 @@ node /^jenkins\d+\.martiadrogue\.com$/ {
   include iptables
   include php
   include apache
-  apache::vhost { 'jenkins.dev': }
   apache::vhost { 'symfony2.dev': }
   apache::vhost { 'laravel.dev': }
   apache::vhost { 'gildedrose.dev': }
-  class { 'mysql': root_password => '12345' }
 }
 
 node /^www\d+\.martiadrogue\.com$/ {
