@@ -7,6 +7,7 @@ define apache::vhost (
   $doc_root = "${www}/${vhname}"
   $public_html = "${doc_root}/public_html"
   $index = "${public_html}/index.html"
+  $logs = [ "${doc_root}/error.log", "${doc_root}/requests.log" ]
 
   $vh_conf = "${apache::sites_available}/${vhname}.conf"
   $vh_conf_link = "${apache::sites_enabled}/${vhname}.conf"
@@ -26,6 +27,15 @@ define apache::vhost (
     mode => 755,
     owner => 'root',
     group => 'root',
+  }
+
+  file { $logs:
+    ensure => present,
+    mode => 777,
+    owner => 'root',
+    group => 'root',
+    content => '',
+    require => File[$doc_root],
   }
 
   file { $public_html:
@@ -60,7 +70,7 @@ define apache::vhost (
     owner => 'root',
     group => 'root',
     target => $vh_conf,
-    require => File[$vh_conf, $apache::sites_enabled],
+    require => File[$vh_conf, $logs, $apache::sites_enabled],
     before => Service['httpd'],
   }
 
