@@ -11,7 +11,7 @@ define mariadb::db::create (
     require => Exec['root_password'],
   }
 
-  mysql::user::grant { $user:
+  mariadb::user::grant { $user:
     host     => 'localhost',
     password => '12345',
     database => $dbname,
