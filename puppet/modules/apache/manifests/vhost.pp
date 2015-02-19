@@ -25,8 +25,8 @@ define apache::vhost (
   file { $doc_root:
     ensure => directory,
     mode => 755,
-    owner => 'root',
-    group => 'root',
+    owner => 'vagrant',
+    group => 'vagrant',
   }
 
   file { $logs:
@@ -41,16 +41,16 @@ define apache::vhost (
   file { $public_html:
     ensure => directory,
     mode => 755,
-    owner => 'root',
-    group => 'root',
+    owner => 'vagrant',
+    group => 'vagrant',
     require => File[$doc_root],
   }
 
   file { $index:
     ensure => present,
     mode => 755,
-    owner => 'root',
-    group => 'root',
+    owner => 'vagrant',
+    group => 'vagrant',
     content => template("apache/var/www/public_html/index.html.erb"),
     require => File[$public_html],
   }
