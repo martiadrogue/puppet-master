@@ -6,13 +6,38 @@ if versioncmp($::puppetversion,'3.6.1') >= 0 {
   }
 }
 
+node /^performance\d+\.martiadrogue\.com$/ {
+  include common
+  include iptables
+  include php
+  include apache
+  apache::vhost { 'provincies': public => 'public' }
+  apache::vhost { 'framework.dev': public => 'public' }
+  apache::vhost { 'mpwarfwk': public => 'public' }
+  apache::vhost { 'performance.dev': public => 'public' }
+  class { 'mariadb': root_password => '12345' }
+  mariadb::db::create { 'provinciesdb': password => '12345' }
+}
+
+node /^phpunit\d+\.martiadrogue\.com$/ {
+  include common
+  include iptables
+  include php
+  include apache
+  apache::vhost { 'pool': public => 'public' }
+  apache::vhost { 'pool2': public => 'public' }
+  class { 'mariadb': root_password => '12345' }
+  mariadb::db::create { 'pooldb': password => '12345' }
+}
+
 node /^jenkins\d+\.martiadrogue\.com$/ {
   include common
   include iptables
   include php
   include apache
-  apache::vhost { 'gildedrose.dev': }
+  apache::vhost { 'pool': public => 'public' }
   class { 'mariadb': root_password => '12345' }
+  mariadb::db::create { 'pooldb': password => '12345' }
 }
 
 node /^www\d+\.martiadrogue\.com$/ {
@@ -20,11 +45,13 @@ node /^www\d+\.martiadrogue\.com$/ {
   include iptables
   include php
   include apache
-  apache::vhost { 'alpha.dev': }
-  apache::vhost { 'beta.dev': }
-  apache::vhost { 'omega.dev': }
-  class { 'mysql': root_password => '12345' }
-  mysql::db::create { 'blogdb': password => '12345' }
+  apache::vhost { 'login': }
+  class { 'mariadb': root_password => '12345' }
+  mariadb::db::create { 'logindb': password => '12345' }
+  class { 'postfix':
+    username => 'webmaster',
+    password => '12345'
+  }
 }
 
 node /^db\d+\.martiadrogue\.com$/ {
