@@ -11,7 +11,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "centos-master"
-  config.vm.box_url = "https://vagrantcloud.com/relativkreativ/boxes/centos-7-minimal/versions/1.0.3/providers/virtualbox.box"
+  config.vm.box_url = "/media/marti/DATA/VMs/box/CentOS-7.0-x86_64.box"
+  # config.vm.box_url = "https://vagrantcloud.com/relativkreativ/boxes/centos-7-minimal/versions/1.0.3/providers/virtualbox.box"
   config.vm.hostname = 'puppet.martiadrogue.com'
 
   # Disable automatic box update checking. If you disable this, then

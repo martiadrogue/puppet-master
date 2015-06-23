@@ -2,5 +2,7 @@
 192.168.33.11   www1.martiadrogue.com www1
 192.168.33.21   db1.martiadrogue.com db1
 192.168.33.31   jenkins1.martiadrogue.com jenkins1
+192.168.33.31   phpunit1.martiadrogue.com phpunit1
+192.168.33.31   performance1.martiadrogue.com performance1
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6

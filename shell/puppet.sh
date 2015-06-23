@@ -1,5 +1,5 @@
 # Description: This script install Puppet Agent, configures host to run with
-# puppet and make a connetion with Pupept Master.
+# puppet and make a connection with Pupept Master.
 #
 # NOTE: At the end of every command, you can see '> /dev/null'. This simply
 # suppresses the output from the installation processes. If you would like to
