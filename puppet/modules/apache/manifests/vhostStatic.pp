@@ -1,7 +1,6 @@
 
 define apache::vhost (
     $vhname = $title,
-    $tipe = 'rewrite',
     $public = 'public_html',
   ) {
 
@@ -62,7 +61,7 @@ define apache::vhost (
     mode => 755,
     owner => 'root',
     group => 'root',
-    content => template("apache/etc/httpd/sites-available/vhost_$tipe.conf.erb"),
+    content => template("apache/etc/httpd/sites-available/vhost.conf.erb"),
     require => File[$apache::sites_available],
   }
 
