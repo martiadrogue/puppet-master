@@ -1,0 +1,18 @@
+<VirtualHost *:80>
+    ServerName <%= @hostname %>.<%= @vhname %>
+    ServerAlias <%= @vhname %>
+    DocumentRoot <%= @public_html %>
+
+
+    <Directory  <%= @public_html %>>
+            Options Indexes FollowSymLinks MultiViews
+            AllowOverride None
+            Order allow,deny
+            allow from all
+            <IfModule mod_rewrite.c>
+                RewriteEngine On
+                RewriteCond %{REQUEST_FILENAME} !-f
+                RewriteRule ^(.*)$ /index.php [QSA,L]
+            </IfModule>
+    </Directory>
+</VirtualHost>
