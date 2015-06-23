@@ -1,7 +1,7 @@
 
 define mariadb::user::grant ($user = $title, $host, $password, $database, $privileges = 'ALL PRIVILEGES') {
 
-  exec { "mariadb::user::grant_privileges":
+  exec { "mariadb::user::grant_privileges_${user}":
     command => "mysql -uroot -p${mariadb::root_password} -e \"GRANT ${privileges} ON ${database}.* TO '${user}'@'${host}' IDENTIFIED BY '${password}'; FLUSH PRIVILEGES;\"",
     path => $mariadb::bin,
     require => [
