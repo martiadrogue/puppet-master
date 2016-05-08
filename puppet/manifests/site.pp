@@ -43,13 +43,10 @@ node /^jenkins\d+\.martiadrogue\.com$/ {
 node /^www\d+\.martiadrogue\.com$/ {
   include common
   include iptables
-  include php
-  include apache
-  apache::vhost { 'login': }
-  class { 'mariadb': root_password => '12345' }
-  mariadb::db::create { 'logindb': password => '12345' }
-  class { 'postfix':
-    username => 'webmaster',
+  class { 'lamp':
+    vhost => 'vtest',
+    public => 'public',
+    root_password => '12345',
     password => '12345'
   }
 }
