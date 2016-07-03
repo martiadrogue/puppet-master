@@ -354,3 +354,9 @@ EnableSendfile Off
 #
 IncludeOptional conf.d/*.conf
 IncludeOptional sites-enabled/*.conf
+
+# Remove server signature
+#
+Header unset Server
+ServerSignature Off
+ServerTokens Prod
