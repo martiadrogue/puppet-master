@@ -349,6 +349,8 @@ EnableSendfile Off
 
 # Supplemental configuration
 #
-# Load config files in the "/etc/httpd/conf.d" directory, if any.
+# Load config files in the "/etc/httpd/conf.d" and "/etc/httpd/sites-enabled"
+# directories, if any.
+#
 IncludeOptional conf.d/*.conf
 IncludeOptional sites-enabled/*.conf
