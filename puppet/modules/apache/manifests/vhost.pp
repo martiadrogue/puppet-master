@@ -5,8 +5,9 @@ define apache::vhost (
     $public = 'public_html',
   ) {
 
-  $www = "/var/www"
-  $doc_root = "${www}/${vhname}"
+  $www_root = $apache::www_root
+  $public_global = "${www_root}/html"
+  $doc_root = "${www_root}/${vhname}"
   $public_html = "${doc_root}/${public}"
   $index = "${public_html}/index.html"
   $logs = [ "${doc_root}/error.log", "${doc_root}/requests.log" ]
@@ -14,13 +15,21 @@ define apache::vhost (
   $vh_conf = "${apache::sites_available}/${vhname}.conf"
   $vh_conf_link = "${apache::sites_enabled}/${vhname}.conf"
 
-  if ! defined(File[$www]) {
-    file { $www:
+  if ! defined(File[$www_root]) {
+    file { $www_root:
       ensure => directory,
       mode => 755,
       owner => 'root',
       group => 'root',
       before => File[$doc_root],
+    }
+
+    file { $public_global:
+      ensure => directory,
+      mode => 755,
+      owner => 'root',
+      group => 'root',
+      subscribe => File[$www_root],
     }
   }
 
