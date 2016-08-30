@@ -45,6 +45,7 @@ node /^www\d+\.martiadrogue\.com$/ {
   include iptables
   class { 'lamp':
     vhost => 'sqlbuilder',
+    www_root => '/www',
     public => 'src',
     root_password => '12345',
     db_password => '12345'
