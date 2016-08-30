@@ -44,10 +44,10 @@ node /^www\d+\.martiadrogue\.com$/ {
   include common
   include iptables
   class { 'lamp':
-    vhost => 'vtest',
-    public => 'public',
+    vhost => 'sqlbuilder',
+    public => 'src',
     root_password => '12345',
-    password => '12345'
+    db_password => '12345'
   }
 }
 
