@@ -1,5 +1,7 @@
 
-class apache {
+class apache(
+    $www_root = '/var/www',
+  ) {
 
   $httpd_root = '/etc/httpd'
   $httpd_conf = "$httpd_root/conf/httpd.conf"
