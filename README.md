@@ -1,6 +1,6 @@
 # Puppet Master
 
-Vagrant config for a testing setup with a Puppet Master.
+Brave Vagrant config for a testing setup with Puppet Master.
 
 A full Puppet test environment that It could be created and destroyed easily.
 Automatically provision multiple VMs for Web Development environment with
