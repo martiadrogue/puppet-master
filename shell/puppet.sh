@@ -14,8 +14,8 @@
 # service puppetmaster status
 
 # Config /etc/hosts
-cat /vagrant/shell/hosts > /etc/hosts
-cat /vagrant/shell/network > /etc/sysconfig/network
+cat /vagrant/shell/etc/hosts > /etc/hosts
+cat /vagrant/shell/etc/sysconfig/network > /etc/sysconfig/network
 
 # Set up firewall
 systemctl stop firewalld 2> /dev/null
